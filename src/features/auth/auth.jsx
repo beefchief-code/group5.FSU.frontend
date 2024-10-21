@@ -19,7 +19,7 @@ function LoginForm() {
 
   //mutate data for login/registration
   const [login, { error: loginError }] = useLoginMutation();
-  const [register, { error: registerError }] = useRegisterMustation();
+  const [register, { error: registerError }] = useRegisterMutation();
 
   //email and password to state
   const [email, setEmail] = useState("");
