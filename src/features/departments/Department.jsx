@@ -1,3 +1,9 @@
 export default function Department() {
-    return (<></>)
+    
+
+    return (
+        <>
+            <h2>Department</h2>
+        </>
+    )
 }
