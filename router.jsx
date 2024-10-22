@@ -8,18 +8,18 @@ import Professors from "./src/features/professors/Professors";
 import Professor from "./src/features/professors/Professor";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
-        children: [
-            { index: true, element: <Home /> },
-            { path: "/login", element: <Auth /> },
-            { path: "/departments", element: <Departments /> },
-            { path: "/departments/:id", element: <Department /> },
-            { path: "/professors", element: <Professors /> },
-            { path: "/professors/:id", element: <Professor /> },
-        ],
-    },
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "/login", element: <Auth /> },
+      { path: "/departments", element: <Departments /> },
+      { path: "/departments/:id", element: <Department /> },
+      { path: "/professors", element: <Professors /> },
+      { path: "/professors/:id", element: <Professor /> },
+    ],
+  },
 ]);
 
 export default router;
