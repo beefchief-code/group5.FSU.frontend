@@ -4,7 +4,7 @@ import "./Navbar.css";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <NavLink to="/home">Fullstack University</NavLink>
+      <NavLink to="/">Fullstack University</NavLink>
       <menu>
         <li>
           <NavLink to="/departments">Departments</NavLink>
