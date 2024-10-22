@@ -31,10 +31,10 @@ function Auth() {
 
     //login or register
     const loginMethod = isLogin ? login : register;
-    const creds = { email, password };
+    const credentials = { email, password };
 
     try {
-      await loginMethod(creds).unwrap();
+      await loginMethod(credentials).unwrap();
       navigate("/");
     } catch (error) {
       console.error(error);
