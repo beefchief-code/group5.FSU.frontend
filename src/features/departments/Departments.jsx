@@ -1,8 +1,7 @@
-import { useGetDepartmentsQuery } from "../departmentsSlice"; // not sure if its me who needs to make the slice.
+import { useGetDepartmentsQuery } from "../departmentsSlice"; 
 import DepartmentRow from "./DepartmentRow";
 
 
-// setSelectedDepartmentId is most likely going to change after we setup store...
 export default function Departments({setSelectedDepartmentId}) { 
 
     const { data: departments = [], isLoading, error } = useGetDepartmentsQuery(); 
@@ -33,7 +32,7 @@ export default function Departments({setSelectedDepartmentId}) {
                         <th>Phone</th>
                     </tr>
                     {
-                        departments.map((department) => ( <ContactRow key={department.id} contact={department} setSelectedDepartmentId={setSelectedDepartmentId} /> )) // some kind of map here after the back-end is done... 
+                        departments.map((department) => ( <DepartmentRow key={department.id} contact={department} setSelectedDepartmentId={setSelectedDepartmentId} /> )) 
                     }
                 </tbody>
             </table>
