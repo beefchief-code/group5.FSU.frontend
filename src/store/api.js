@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_URL = 'http://localhost:5173'; // to test locally for now till we get the server up and running.
+const API_URL = 'http://localhost:3000'; // to test locally for now till we get the server up and running.
 
 const api = createApi({
     baseQuery: fetchBaseQuery({
@@ -13,7 +13,7 @@ const api = createApi({
         },
     }),
     endpoints: () => ({}),
-    tagTypes: ["department"], // we still need to add other tags here as we build
+    tagTypes: ["Department", "Professor"], // we still need to add other tags here as we build
 });
 
 export default api;

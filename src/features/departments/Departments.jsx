@@ -1,8 +1,8 @@
-import { useGetDepartmentsQuery } from "../departmentsSlice"; 
+import { useGetDepartmentsQuery } from "./departmentSlice"; 
 import DepartmentRow from "./DepartmentRow";
 
 
-export default function Departments({setSelectedDepartmentId}) { 
+export default function Departments() { 
 
     const { data: departments = [], isLoading, error } = useGetDepartmentsQuery(); 
 
@@ -12,7 +12,7 @@ export default function Departments({setSelectedDepartmentId}) {
     if (error) {
         return <p>{error.error}: {error.message}</p>;
     }
-    if (!books.length) {
+    if (!departments.length) {
         return <p>There are no Departments.</p>;
     }
 
@@ -32,7 +32,7 @@ export default function Departments({setSelectedDepartmentId}) {
                         <th>Phone</th>
                     </tr>
                     {
-                        departments.map((department) => ( <DepartmentRow key={department.id} contact={department} setSelectedDepartmentId={setSelectedDepartmentId} /> )) 
+                        departments.map((department) => ( <DepartmentRow key={department.id} department={department} /> )) 
                     }
                 </tbody>
             </table>

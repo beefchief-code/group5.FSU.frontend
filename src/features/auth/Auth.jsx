@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoginMutation, useRegisterMustation } from "./authSlice";
+import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -69,7 +69,7 @@ function Auth() {
         {altCopy}
       </a>
       {isLogin && loginError && <p role="alert">{loginError}</p>}
-      {!islogin && registerError && <p role="alert">{registerError}</p>}
+      {!isLogin && registerError && <p role="alert">{registerError}</p>}
     </>
   );
 }

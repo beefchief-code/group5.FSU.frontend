@@ -4,13 +4,13 @@ const departmentApi = api.injectEndpoints({
     endpoints: (build) => ({
         getDepartments: build.query({
             query: () => '/departments',
-            transformResponse: (response) => response.departments,
-            providesTags: ['department'],
+            // transformResponse: (response) => response.departments,
+            providesTags: ['Department'],
         }),
         getDepartment: build.query({
             query: (id) => '/departments/' + id,
-            transformResponse: (response) => response.department,
-            providesTags: ['department'],
+            // transformResponse: (response) => response.department,
+            providesTags: ['Department'],
         })
     })
 });
