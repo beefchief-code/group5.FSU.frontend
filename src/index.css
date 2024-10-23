@@ -7,8 +7,25 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 }
 
 h1 {
   text-align: center;
+=======
+
+  --main-blue: navy;
+  --main-yellow: yellow;
+
+  --deep-blue: #031d3f;
+  --deep-yellow: #ecb602;
+
+  --neutral-white: #fff;
+}
+
+/* Box sizing rules */
+* {
+  margin: 0;
+  padding: 0;
+>>>>>>> main
 }
