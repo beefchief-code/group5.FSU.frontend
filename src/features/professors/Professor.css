@@ -1,0 +1,14 @@
+.professor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.professor .department-name {
+    font-style: italic;
+}
+
+.professor img {
+    height: 15rem;
+    object-fit: contain;
+}
