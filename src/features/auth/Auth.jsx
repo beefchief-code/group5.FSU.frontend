@@ -69,7 +69,7 @@ function Auth() {
         {altCopy}
       </a>
       {isLogin && loginError && <p role="alert">{loginError}</p>}
-      {!islogin && registerError && <p role="alert">{registerError}</p>}
+      {!isLogin && registerError && <p role="alert">{registerError}</p>}
     </>
   );
 }
