@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 // React-Redux
-import { useGetProfessorQuery, useUpdateProfessorMutation } from "./professorSlice"
+import { useDeleteProfessorMutation, useGetProfessorQuery, useUpdateProfessorMutation } from "./professorSlice"
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 
@@ -61,6 +61,19 @@ export default function Professor() {
         }
     }
 
+    // Delete Methods
+    const [deleteProfessor] = useDeleteProfessorMutation();
+    const [deleteError, setDeleteError] = useState("");
+    const navigate = useNavigate();
+    async function sendDeleteProfessor() {
+        try {
+            await deleteProfessor(id);
+            navigate("/professors");
+        } catch (e) {
+            setDeleteError(e);
+        }
+    }
+
     // Error Message Rendering
     if (professorLoading) {
         return <p>Loading professor...</p>;
@@ -88,53 +101,57 @@ export default function Professor() {
                 </button>
             }
             {isEditing &&
-                <form onSubmit={sendUpdateProfessor}>
-                    <h1>Update Professor Information:</h1>
-                    <label> Name
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </label>
-                    <label> Profile Picture
-                        <input
-                            type="text"
-                            value={profileImage}
-                            onChange={(e) => setProfileImage(e.target.value)}
-                        />
-                    </label>
-                    <label> Biography
-                        <input
-                            type="text"
-                            value={bio}
-                            onChange={(e) => setBio(e.target.value)}
-                        />
-                    </label>
-                    <label> Email
-                        <input
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </label>
-                    <label> Phone Number
-                        <input
-                            type="text"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                        />
-                    </label>
-                    <label> Department Id
-                        <input
-                            type="number"
-                            value={departmentId}
-                            onChange={(e) => setDepartmentId(e.target.value)}
-                        />
-                    </label>
-                    <button type="submit">Update Professor</button>
-                    {updateError && <p>{updateError.message}</p>}
-                </form>
+                <>
+                    <form onSubmit={sendUpdateProfessor}>
+                        <h1>Update Professor Information:</h1>
+                        <label> Name
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </label>
+                        <label> Profile Picture
+                            <input
+                                type="text"
+                                value={profileImage}
+                                onChange={(e) => setProfileImage(e.target.value)}
+                            />
+                        </label>
+                        <label> Biography
+                            <input
+                                type="text"
+                                value={bio}
+                                onChange={(e) => setBio(e.target.value)}
+                            />
+                        </label>
+                        <label> Email
+                            <input
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </label>
+                        <label> Phone Number
+                            <input
+                                type="text"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+                        </label>
+                        <label> Department Id
+                            <input
+                                type="number"
+                                value={departmentId}
+                                onChange={(e) => setDepartmentId(e.target.value)}
+                            />
+                        </label>
+                        <button type="submit">Update Professor</button>
+                        {updateError && <p>{updateError.message}</p>}
+                    </form>
+                    <button onClick={sendDeleteProfessor}>Delete Professor Entry</button>
+                    {deleteError && <p>{deleteError.message}</p>}
+                </>
             }
         </main>
     )
