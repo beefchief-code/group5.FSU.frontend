@@ -1,20 +1,42 @@
 .professors {
+    background-color: var(--deep-blue);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
     text-align: center;
 }
 
+.professors h1 {
+    color: var(--main-yellow);
+}
+
 .professors table {
     width: 30rem;
-    background-color: #fffcd1;
+    background-color: var(--neutral-white);
 }
 
 .professors thead {
     color: #fffef3;
-    background-color: #00158a;
+    background-color: var(--deep-blue);
 }
 
 .professors thead th {
     padding: 0.5rem;
+}
+
+.professors form {
+    background-color: var(--neutral-white);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    width: 20rem;
+}
+
+.professors button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--neutral-white);
 }
