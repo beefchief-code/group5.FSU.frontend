@@ -12,7 +12,6 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
       transformErrorResponse: (response) => {
-        debugger;
         response.data.message;
       },
       invalidatesTags: ["User"],
