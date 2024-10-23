@@ -1,0 +1,27 @@
+.homeMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.homeImg {
+  align-content: center;
+}
+
+.homeMessage {
+  text-align: center;
+}
+
+.homeNav {
+  list-style: none;
+  align-content: center;
+}
+
+.homeLinks {
+  text-align: center;
+}

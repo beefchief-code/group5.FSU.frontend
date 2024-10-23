@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoginMutation, useRegisterMutation } from "./authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css";
 
 /**
  * LoginForm allows user to register or login
