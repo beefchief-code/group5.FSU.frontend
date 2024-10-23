@@ -1,5 +1,6 @@
 import { useGetProfessorsQuery } from "./professorSlice";
 import { NavLink } from "react-router-dom";
+import "./Professors.css";
 
 export default function Professors() {
     const { data: professors = [], isLoading, error } = useGetProfessorsQuery();
@@ -15,7 +16,7 @@ export default function Professors() {
     }
 
     return (
-        <main>
+        <main className="professors">
             <h1>Professors</h1>
             <table>
                 <thead>
