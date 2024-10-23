@@ -1,0 +1,25 @@
+.professor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.professor .department-name {
+    font-style: italic;
+}
+
+.professor img {
+    height: 15rem;
+    object-fit: contain;
+}
+
+.professor form {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+}
+
+.professor form label {
+    display: flex;
+}

@@ -13,7 +13,7 @@ const professorApi = api.injectEndpoints({
         updateProfessor: build.mutation({
             query: ({ id, name, bio, profileImage, email, phoneNumber, departmentId }) => ({
                 url: "/professors/" + id,
-                method: "PATCH",
+                method: "PUT",
                 body: { name, bio, profileImage, email, phoneNumber, departmentId },
             }),
             invalidatesTags: ["Professor"],
