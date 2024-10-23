@@ -44,33 +44,36 @@ function Auth() {
 
   return (
     <>
-      <h1>{authAction}</h1>
-      <form onSubmit={attemptAuth}>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="email"
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete="current-password"
-          />
-        </label>
-        <button>{authAction}</button>
-      </form>
-      <a href="#" onClick={() => setIsLogin(!isLogin)}>
-        {altCopy}
-      </a>
-      {isLogin && loginError && <p role="alert">{loginError}</p>}
-      {!isLogin && registerError && <p role="alert">{registerError}</p>}
+      <main className="loginMain">
+        <h1>{authAction}</h1>
+        <form className="authForm" onSubmit={attemptAuth}>
+          <label>
+            Email:
+            <input
+              label="user@email.com"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              autoComplete="current-password"
+            />
+          </label>
+          <button>{authAction}</button>
+        </form>
+        <a className="regLink" href="#" onClick={() => setIsLogin(!isLogin)}>
+          {altCopy}
+        </a>
+        {isLogin && loginError && <p role="alert">{loginError}</p>}
+        {!isLogin && registerError && <p role="alert">{registerError}</p>}
+      </main>
     </>
   );
 }
