@@ -1,9 +1,8 @@
 import { useGetProfessorsQuery } from "./professorSlice";
-import { useGetDepartmentsQuery } from "../departments/departmentSlice";
+import { NavLink } from "react-router-dom";
 
 export default function Professors() {
     const { data: professors = [], isLoading, error } = useGetProfessorsQuery();
-    const { data: departments = [] } = useGetDepartmentsQuery();
 
     if (isLoading) {
         return <p>Loading Professors...</p>;
@@ -27,11 +26,10 @@ export default function Professors() {
                 </thead>
                 <tbody>
                     {professors.map((professor) => {
-                        const department = departments.find((department) => department.id === professor.departmentId);
                         return (
                             <tr key={professor.id}>
-                                <td>{professor.name}</td>
-                                <td>{department.name}</td>
+                                <td><NavLink to={`/professors/${professor.id}`}>{professor.name}</NavLink></td>
+                                <td>{professor.department.name}</td>
                             </tr>
                         )
                     })}
