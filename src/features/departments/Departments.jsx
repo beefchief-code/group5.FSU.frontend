@@ -1,4 +1,4 @@
-import { useGetDepartmentsQuery } from "../departmentsSlice"; 
+import { useGetDepartmentsQuery } from "./departmentSlice"; 
 import DepartmentRow from "./DepartmentRow";
 
 

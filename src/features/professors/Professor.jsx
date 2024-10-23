@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useGetProfessorQuery } from "../professorSlice"
+import { useGetProfessorQuery } from "./professorSlice"
 import { useGetDepartmentQuery } from "../departments/departmentSlice"
 
 export default function Professor() {

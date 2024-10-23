@@ -1,4 +1,4 @@
-import { useGetProfessorsQuery } from "../professorSlice";
+import { useGetProfessorsQuery } from "./professorSlice";
 
 export default function Professors() {
     const { data: professors = [], isLoading, error } = useGetProfessorsQuery();
