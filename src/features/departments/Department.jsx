@@ -18,7 +18,6 @@ export default function Department() {
     }
 
     return (
-        <>
             <main className="department-component-main">
                 <article className="department-article">
                     {department ? (
@@ -53,6 +52,5 @@ export default function Department() {
                     </ul>
                 </section>
             </main>            
-        </>
     )
 }
