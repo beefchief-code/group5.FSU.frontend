@@ -1,7 +1,11 @@
 .professor {
+    background-color: var(--deep-blue);
+    color: var(--deep-yellow);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .professor .department-name {
@@ -11,15 +15,56 @@
 .professor img {
     height: 15rem;
     object-fit: contain;
+    border: 3px solid var(--neutral-white);
+}
+
+.professor .contact-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.professor a:link {
+    color: var(--deep-yellow);
+    text-decoration: none;
 }
 
 .professor form {
-    padding: 1rem;
+    background-color: var(--neutral-white);
+    color: #000;
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 25rem;
+}
+
+.professor form h2 {
+    font-size: 1.25rem;
+    border-bottom: 3px solid var(--neutral-white);
 }
 
 .professor form label {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+}
+
+.professor form input,
+.professor form select {
+    width: 17rem;
+}
+
+.professor button {
+    width: 10rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--neutral-white);
+}
+
+.professor .delete-professor-btn {
+    width: 15rem;
+    background-color: #ffcc4c;
 }

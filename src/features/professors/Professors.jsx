@@ -1,9 +1,17 @@
+// React-Router
+import { Link } from "react-router-dom";
+
+// React-Redux
 import { useAddProfessorMutation, useGetProfessorsQuery } from "./professorSlice";
-import { NavLink } from "react-router-dom";
-import "./Professors.css";
-import { useState } from "react";
+import { useGetDepartmentsQuery } from "../departments/departmentSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
+
+// Other State Management
+import { useState } from "react";
+
+// Styling
+import "./Professors.css";
 
 export default function Professors() {
     // Table Data
@@ -14,6 +22,7 @@ export default function Professors() {
     const token = useSelector(selectToken);
 
     // Form Input States
+    const { data: departments } = useGetDepartmentsQuery();
     const [name, setName] = useState("");
     const [profileImage, setProfileImage] = useState("");
     const [bio, setBio] = useState("");
@@ -64,19 +73,19 @@ export default function Professors() {
                     {professors.map((professor) => {
                         return (
                             <tr key={professor.id}>
-                                <td><NavLink to={`/professors/${professor.id}`}>{professor.name}</NavLink></td>
-                                <td>{professor.department.name}</td>
+                                <td><Link to={`/professors/${professor.id}`}>{professor.name}</Link></td>
+                                <td><Link to={`/departments/${professor.departmentId}`}>{professor.department.name}</Link></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
             {token &&
-                <button onClick={() => setIsEditing(!isEditing)}>{!isEditing ? "Edit Mode" : "View Mode"}</button>
+                <button onClick={() => setIsEditing(!isEditing)}>{!isEditing ? "Add Professor" : "Hide Add Professor"}</button>
             }
             {isEditing &&
                 <form onSubmit={sendAddProfessor}>
-                    <h2>Add Professor</h2>
+                    <h2>Add Professor to Directory</h2>
                     <label> Name
                         <input
                             type="text"
@@ -112,12 +121,14 @@ export default function Professors() {
                             onChange={(e) => setPhoneNumber(e.target.value)}
                         />
                     </label>
-                    <label> Department Id
-                        <input
-                            type="number"
-                            value={departmentId}
-                            onChange={(e) => setDepartmentId(+e.target.value)}
-                        />
+                    <label>Department:
+                        <select onChange={(e) => setDepartmentId(+e.target.value)}>
+                            {departments.map((department) =>
+                                <option key={department.id} value={department.id}>
+                                    {department.name}
+                                </option>
+                            )}
+                        </select>
                     </label>
                     <button type="submit">Add Professor</button>
                     {addError && <p>{addError.message}</p>}
