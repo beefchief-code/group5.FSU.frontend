@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // React-Redux
 import { useAddProfessorMutation, useGetProfessorsQuery } from "./professorSlice";
+import { useGetDepartmentsQuery } from "../departments/departmentSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 
@@ -21,6 +22,7 @@ export default function Professors() {
     const token = useSelector(selectToken);
 
     // Form Input States
+    const { data: departments } = useGetDepartmentsQuery();
     const [name, setName] = useState("");
     const [profileImage, setProfileImage] = useState("");
     const [bio, setBio] = useState("");
@@ -119,12 +121,14 @@ export default function Professors() {
                             onChange={(e) => setPhoneNumber(e.target.value)}
                         />
                     </label>
-                    <label> Department Id
-                        <input
-                            type="number"
-                            value={departmentId}
-                            onChange={(e) => setDepartmentId(+e.target.value)}
-                        />
+                    <label>Department:
+                        <select onChange={(e) => setDepartmentId(+e.target.value)}>
+                            {departments.map((department) =>
+                                <option key={department.id} value={department.id}>
+                                    {department.name}
+                                </option>
+                            )}
+                        </select>
                     </label>
                     <button type="submit">Add Professor</button>
                     {addError && <p>{addError.message}</p>}
