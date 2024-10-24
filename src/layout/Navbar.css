@@ -1,11 +1,31 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20%;
+  padding-right: 20%;
+  background-color: var(--deep-yellow);
+  height: 60px;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .navbar menu {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navBarLink {
+  text-decoration: none;
+}
+
+.navBarLink:link {
+  color: var(--deep-blue);
+}
+
+.navBarLink:visited {
+  color: var(--main-blue);
 }
