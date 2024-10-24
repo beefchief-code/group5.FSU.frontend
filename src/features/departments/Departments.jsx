@@ -13,9 +13,9 @@ export default function Departments() {
     const token = useSelector(selectToken);
 
     // Form Input States
-    const [departmentName, setDepartmentName] = useState("");
-    const [departmentDescription, setDepartmentDescription] = useState("");
-    const [departmentImage, setDepartmentImage] = useState("");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [professorIds, setProfessorIds] = useState([]);
@@ -28,7 +28,7 @@ export default function Departments() {
 
         try {
             const response = await addDepartment({
-                departmentName, departmentDescription, departmentImage, email, phoneNumber, professorIds
+                name, description, image, email, phoneNumber, professorIds
             });
 
             if (!response) {
@@ -78,16 +78,16 @@ export default function Departments() {
                                 Department Name    
                                 <input 
                                     type="text" 
-                                    value={departmentName} 
-                                    onChange={(e) => setDepartmentName(e.target.value)}
+                                    value={name} 
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                             </label>
 
                             <label>
                                 Department Description
                                 <textarea 
-                                    value={departmentDescription}
-                                    onChange={(e) => setDepartmentDescription(e.target.value)}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
                                 />
                             </label>
 
@@ -95,8 +95,8 @@ export default function Departments() {
                                 Department Image
                                 <input 
                                     type="text" 
-                                    value={departmentImage}
-                                    onChange={(e) => setDepartmentImage(e.target.value)}
+                                    value={image}
+                                    onChange={(e) => setImage(e.target.value)}
                                 />
                             </label>
 
