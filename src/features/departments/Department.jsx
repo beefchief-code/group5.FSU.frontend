@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useGetDepartmentQuery } from "./departmentSlice";
+import { selectToken } from "../auth/authSlice";
 
 export default function Department() {
 
@@ -9,7 +10,7 @@ export default function Department() {
     const token = useSelector(selectToken);
 
     if (isLoading) {
-        return <p>Loading book...</p>;
+        return <p>Loading department...</p>;
     }
 
     if (error) {
@@ -17,14 +18,39 @@ export default function Department() {
     }
 
     return (
-        <>
-            <article>
-                <h2>{department.name}</h2>
-                <p>{department.description}</p>
-                <img src={department.image} alt={department.name}/>
-                <p>{department.phoneNumber}</p>
-                <p>{department.email}</p>
-            </article>
-        </>
+            <main className="department-component-main">
+                <article className="department-article">
+                    {department ? (
+                        <section className="department-section-flex-box">
+                            <img src={department.image} alt={department.name}/>
+                            <h2>{department.name}</h2>
+                            <p>{department.description}</p>
+                            <a href={`tel:${department.phoneNumber}`}>{department.phoneNumber}</a>
+                            <a href={`mailto:${department.email}`}>{department.email}</a>
+                        </section>
+                    ) : (
+                        <p>There is no selected department.</p>
+                    )
+
+                    }
+                </article>
+
+                <section >
+                    <h1>Meet our faculty and staff</h1>
+                    <ul className="departments-flex-box">
+                        {
+                            department.professors.map((p) => (
+                                <li>
+                                    <Link to={`/professors/${p.id}`} >
+                                        <img src={p.profileImage} alt={p.name}/>
+                                        <h2>{p.name}</h2>
+                                        <p>{p.bio}</p>
+                                    </Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+            </main>            
     )
 }
