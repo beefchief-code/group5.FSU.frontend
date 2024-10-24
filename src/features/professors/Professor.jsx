@@ -93,7 +93,7 @@ export default function Professor() {
     return (
         <main className="professor">
             <h1>{professor.name}</h1>
-            <p className="department-name">{professor.department.name}</p>
+            {professor.department ? <p className="department-name">{professor.department.name}</p> : token && <p className="department-name">Admin Note: Please assign department</p>}
             <img src={professor.profileImage} alt="Professor profile picture" />
             <h2>Biography:</h2>
             <p>{professor.bio}</p>
