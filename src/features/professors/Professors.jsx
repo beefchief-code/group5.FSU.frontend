@@ -1,9 +1,10 @@
 import { useAddProfessorMutation, useGetProfessorsQuery } from "./professorSlice";
-import { NavLink } from "react-router-dom";
-import "./Professors.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
+
+import "./Professors.css";
 
 export default function Professors() {
     // Table Data
@@ -64,7 +65,7 @@ export default function Professors() {
                     {professors.map((professor) => {
                         return (
                             <tr key={professor.id}>
-                                <td><NavLink to={`/professors/${professor.id}`}>{professor.name}</NavLink></td>
+                                <td><Link to={`/professors/${professor.id}`}>{professor.name}</Link></td>
                                 <td>{professor.department.name}</td>
                             </tr>
                         )
