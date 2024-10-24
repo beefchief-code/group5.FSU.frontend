@@ -1,9 +1,15 @@
-import { useAddProfessorMutation, useGetProfessorsQuery } from "./professorSlice";
+// React-Router
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
+// React-Redux
+import { useAddProfessorMutation, useGetProfessorsQuery } from "./professorSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 
+// Other State Management
+import { useState } from "react";
+
+// Styling
 import "./Professors.css";
 
 export default function Professors() {
