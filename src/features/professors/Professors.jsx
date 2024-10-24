@@ -83,7 +83,7 @@ export default function Professors() {
             }
             {isEditing &&
                 <form onSubmit={sendAddProfessor}>
-                    <h2>Add Professor</h2>
+                    <h2>Add Professor to Directory</h2>
                     <label> Name
                         <input
                             type="text"

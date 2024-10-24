@@ -9,17 +9,33 @@
 }
 
 .professors h1 {
-    color: var(--main-yellow);
+    color: var(--deep-yellow);
 }
 
 .professors table {
     width: 30rem;
-    background-color: var(--neutral-white);
+    background-color: var(--main-blue);
+    color: var(--deep-yellow);
+    border-collapse: collapse;
+    border: 3px var(--neutral-white) solid;
 }
 
-.professors thead {
-    color: #fffef3;
+.professors td {
+    padding: 0.25rem;
+}
+
+.professors a:link {
+    text-decoration: none;
+    color: var(--main-yellow);
+}
+
+.professors a:visited {
+    color: var(--deep-yellow);
+}
+
+.professors thead tr {
     background-color: var(--deep-blue);
+    border-bottom: 3px var(--neutral-white) solid;
 }
 
 .professors thead th {
@@ -30,12 +46,25 @@
     background-color: var(--neutral-white);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
+    padding: 1rem;
     border-radius: 1rem;
-    width: 20rem;
+    width: 25rem;
+}
+
+.professors form label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.professors form input {
+    width: 17rem;
 }
 
 .professors button {
+    width: 10rem;
     padding: 0.5rem;
     border-radius: 1rem;
     background-color: var(--neutral-white);

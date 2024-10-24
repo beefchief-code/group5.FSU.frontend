@@ -95,54 +95,56 @@ export default function Professor() {
             <img src={professor.profileImage} alt="Professor profile picture" />
             <h2>Biography:</h2>
             <p>{professor.bio}</p>
-            <h3 className="contact-info">Contact Information</h3>
-            <p>{professor.email}</p>
-            <p>{professor.phoneNumber}</p>
+            <div className="contact-information">
+                <h3>Contact Information</h3>
+                <a href={`tel:${professor.phoneNumber}`}>{professor.phoneNumber}</a>
+                <a href={`mailto:${professor.email}`}>{professor.email}</a>
+            </div>
             {token && 
                 <button onClick={() => setIsEditing(!isEditing)}>
-                    {!isEditing ? "Edit" : "Exit Editing"}
+                    {!isEditing ? "Edit" : "Hide Editing"}
                 </button>
             }
             {isEditing &&
                 <>
                     <form onSubmit={sendUpdateProfessor}>
-                        <h1>Update Professor Information:</h1>
-                        <label> Name
+                        <h2>Update Professor Information</h2>
+                        <label>Name:
                             <input
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </label>
-                        <label> Profile Picture
+                        <label>Profile Picture:
                             <input
                                 type="text"
                                 value={profileImage}
                                 onChange={(e) => setProfileImage(e.target.value)}
                             />
                         </label>
-                        <label> Biography
+                        <label>Biography:
                             <input
                                 type="text"
                                 value={bio}
                                 onChange={(e) => setBio(e.target.value)}
                             />
                         </label>
-                        <label> Email
+                        <label>Email:
                             <input
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </label>
-                        <label> Phone Number
+                        <label>Phone Number:
                             <input
                                 type="text"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                         </label>
-                        <label> Department Id
+                        <label>Department Id:
                             <input
                                 type="number"
                                 value={departmentId}
@@ -152,7 +154,7 @@ export default function Professor() {
                         <button type="submit">Update Professor</button>
                         {updateError && <p>{updateError.message}</p>}
                     </form>
-                    <button onClick={sendDeleteProfessor}>Delete Professor Entry</button>
+                    <button className="delete-professor-btn" onClick={sendDeleteProfessor}>Delete Professor from Directory</button>
                     {deleteError && <p>{deleteError.message}</p>}
                 </>
             }
