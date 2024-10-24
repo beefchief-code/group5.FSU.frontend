@@ -79,7 +79,7 @@ export default function Professors() {
                 </tbody>
             </table>
             {token &&
-                <button onClick={() => setIsEditing(!isEditing)}>{!isEditing ? "Edit Mode" : "View Mode"}</button>
+                <button onClick={() => setIsEditing(!isEditing)}>{!isEditing ? "Add Professor" : "Hide Add Professor"}</button>
             }
             {isEditing &&
                 <form onSubmit={sendAddProfessor}>
