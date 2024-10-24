@@ -1,3 +1,4 @@
+// React-Router
 import { useNavigate, useParams } from "react-router-dom"
 
 // React-Redux
@@ -5,9 +6,11 @@ import { useDeleteProfessorMutation, useGetProfessorQuery, useUpdateProfessorMut
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 
+// Other State Management
+import { useEffect, useState } from "react";
+
 // Styling
 import "./Professor.css"
-import { useEffect, useState } from "react";
 
 export default function Professor() {
     // Initial Rendering
