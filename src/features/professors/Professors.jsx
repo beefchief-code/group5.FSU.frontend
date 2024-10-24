@@ -72,7 +72,7 @@ export default function Professors() {
                         return (
                             <tr key={professor.id}>
                                 <td><Link to={`/professors/${professor.id}`}>{professor.name}</Link></td>
-                                <td>{professor.department.name}</td>
+                                <td><Link to={`/departments/${professor.departmentId}`}>{professor.department.name}</Link></td>
                             </tr>
                         )
                     })}
