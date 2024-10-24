@@ -1,8 +1,18 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./home.css";
-import "../../index.css";
+import { useSelector, useDispatch } from "react-redux";
+import { selectToken, logout } from "../auth/authSlice";
 
 export default function Home() {
+  const token = useSelector(selectToken);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    dispatch(logout());
+    navigate("/");
+  }
+
   return (
     <>
       <main className="homeMain">
@@ -25,9 +35,15 @@ export default function Home() {
             </NavLink>
           </li>
           <li>
-            <NavLink className="navLink" to="/login">
-              Login or Register for an Admin Account
-            </NavLink>
+            {token ? (
+              <a className="navLink" href="#" onClick={handleLogout}>
+                You are already logged in. Click to log out.
+              </a>
+            ) : (
+              <NavLink className="navLink" to="/login">
+                Login or Register for an Admin Account
+              </NavLink>
+            )}
           </li>
         </ul>
       </main>
