@@ -4,18 +4,43 @@ const departmentApi = api.injectEndpoints({
     endpoints: (build) => ({
         getDepartments: build.query({
             query: () => '/departments',
-            // transformResponse: (response) => response.departments,
             providesTags: ['Department'],
         }),
         getDepartment: build.query({
             query: (id) => '/departments/' + id,
-            // transformResponse: (response) => response.department,
             providesTags: ['Department'],
-        })
+        }),
+        addDepartment: build.mutation({
+            query: (department) => ({
+                url: "/departments",
+                method: "POST",
+                body: department,
+            }),
+            invalidatesTags: ["Department"],
+        }),
+        updateDepartment: build.mutation({
+            query: ({ id, name, description, image, email, phoneNumber }) => ({
+                url: "/departments/" + id,
+                method: "PUT",
+                body: { name, description, image, email, phoneNumber },
+            }),
+            invalidatesTags: ["Department"],
+        }),
+        deleteDepartment: build.mutation({
+            query: (id) => ({
+                url: "/departments/" + id,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["Department"]
+        }),
+        
     })
 });
 
 export const {
     useGetDepartmentsQuery,
     useGetDepartmentQuery,
+    useAddDepartmentMutation,
+    useUpdateDepartmentMutation,
+    useDeleteDepartmentMutation,
 } = departmentApi;

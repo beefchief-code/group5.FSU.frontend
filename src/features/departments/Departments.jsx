@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useGetDepartmentsQuery } from "./departmentSlice"; 
+import { selectToken } from "../auth/authSlice";
 import './departments.css'
 
 
 export default function Departments() { 
 
     const { data: departments = [], isLoading, error } = useGetDepartmentsQuery(); 
+
+    const token = useSelector(selectToken);
 
     if (isLoading) {
         return <p>Loading departments...</p>;

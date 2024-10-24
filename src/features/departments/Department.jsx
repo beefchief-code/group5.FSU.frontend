@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { useGetDepartmentQuery } from "./departmentSlice";
+import { selectToken } from "../auth/authSlice";
 
 export default function Department() {
 
     const { id } = useParams();
     const { data: department, isLoading, error } = useGetDepartmentQuery(id);
-    // const token = useSelector(selectToken);
+    const token = useSelector(selectToken);
 
     if (isLoading) {
         return <p>Loading department...</p>;
