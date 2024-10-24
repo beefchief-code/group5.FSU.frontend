@@ -50,7 +50,7 @@ function Auth() {
           <label>
             Email:
             <input
-              label="user@email.com"
+              placeholder="user@email.com"
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
@@ -60,6 +60,7 @@ function Auth() {
           <label>
             Password:
             <input
+              placeholder="password"
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -71,8 +72,10 @@ function Auth() {
         <a className="regLink" href="#" onClick={() => setIsLogin(!isLogin)}>
           {altCopy}
         </a>
-        {isLogin && loginError && <p role="alert">{loginError}</p>}
-        {!isLogin && registerError && <p role="alert">{registerError}</p>}
+        {isLogin && loginError && <p role="alert">{loginError.data}</p>}
+        {!isLogin && registerError && (
+          <p role="alert">{[registerError.data]}</p>
+        )}
       </main>
     </>
   );

@@ -11,9 +11,6 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
-      transformErrorResponse: (response) => {
-        response.data.message;
-      },
       invalidatesTags: ["User"],
     }),
     //login
@@ -23,7 +20,6 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
-      transformErrorResponse: (response) => response.data.message,
       invalidatesTags: ["User"],
     }),
   }),
