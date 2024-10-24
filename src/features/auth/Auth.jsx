@@ -72,7 +72,7 @@ function Auth() {
         <a className="regLink" href="#" onClick={() => setIsLogin(!isLogin)}>
           {altCopy}
         </a>
-        {isLogin && loginError && <p role="alert">{[loginError.data]}</p>}
+        {isLogin && loginError && <p role="alert">{loginError.data}</p>}
         {!isLogin && registerError && (
           <p role="alert">{[registerError.data]}</p>
         )}
