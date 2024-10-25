@@ -22,3 +22,8 @@
   margin: 0;
   padding: 0;
 }
+button {
+  background-color: var(--deep-yellow);
+  color: var(--deep-blue);
+  padding: 0.5em;
+}
