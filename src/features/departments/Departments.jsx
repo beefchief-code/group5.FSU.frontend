@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import { useGetDepartmentsQuery, useAddDepartmentMutation } from "./departmentSlice"; 
 import { selectToken } from "../auth/authSlice";
 import './departments.css'
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 export default function Departments() { 
-
     const { data: departments = [], isLoading, error } = useGetDepartmentsQuery(); 
-
     const token = useSelector(selectToken);
 
     // Form Input States
@@ -25,12 +22,12 @@ export default function Departments() {
 
     async function sendAddDepartment(event) {
         event.preventDefault();
-
+        
         try {
             const response = await addDepartment({
                 name, description, image, email, phoneNumber, professorIds
             });
-
+            
             if (!response) {
                 setAddError(response.error);
             } else {
@@ -40,6 +37,33 @@ export default function Departments() {
             setAddError(e);
         }
     }
+    
+    const phonePattern = (input) => {
+        input = input.replace(/\D/g, "");
+        
+        if (input.length > 1 && input[0] === "1") {
+            if (input.length <= 4) {
+                input = input.slice(0, 1) + "-" + input.slice(1);
+            } else if (input.length <= 7) {
+                input = input.slice(0, 1) + "-" + input.slice(1, 4) + "-" + input.slice(4);
+            } else {
+                input = input.slice(0, 1) + "-" + input.slice(1, 4) + "-" + input.slice(4, 7) + "-" + input.slice(7, 11);
+            }
+        } else if (input.length <= 6) {
+          input = input.slice(0, 3) + "-" + input.slice(3);
+        } else {
+          input =
+            input.slice(0, 3) + "-" + input.slice(3, 6) + "-" + input.slice(6, 10);
+        }
+        return input;
+      };
+    
+      useEffect(() => {
+        const formattedPhone = phonePattern(phoneNumber);
+        if (formattedPhone !== phoneNumber) {
+          setPhoneNumber(formattedPhone);
+        }
+      }, [phoneNumber]);
 
     if (isLoading) {
         return <p>Loading departments...</p>;
@@ -113,18 +137,20 @@ export default function Departments() {
                                 Phone Number 
                                 <input 
                                     type="tel" 
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                    placeholder="123-456-7890"
+                                    placeholder="1-123-123-1234 or 123-123-1234"
                                     value={phoneNumber}
                                     onChange={(e) => setPhoneNumber(e.target.value)}
+                                    maxLength="14"
                                 />
                             </label>
                             <button type="submit">Add Department</button>
                         </form>
                     ) : (
-                        <p>You are not authorized to add new departments</p>
+                        <p className="auth-message">You are not authorized to add new departments</p>
                     )
             }
         </main>
     )
 }
+
+
