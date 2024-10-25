@@ -24,9 +24,3 @@
 .regLink:visited {
   color: var(--main-yellow);
 }
-
-button {
-  background-color: var(--deep-yellow);
-  color: var(--deep-blue);
-  padding: 0.5em;
-}
